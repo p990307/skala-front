@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>나의 개인 포털 메인</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="bg-decor" aria-hidden="true">
+        <span style="left:2%; top:10%;">🐰</span>
+        <span style="right:2%; top:12%;">🌸</span>
+        <span style="left:3%; top:32%;">🍀</span>
+        <span style="right:3%; top:38%;">🦋</span>
+        <span style="left:2%; top:58%;">🎈</span>
+        <span style="right:2%; top:62%;">🧸</span>
+        <span style="left:3%; top:84%;">⭐</span>
+        <span style="right:3%; top:86%;">🍒</span>
+    </div>
+    <div class="container">
+        <header class="hero">
+            <div class="hero-decor" aria-hidden="true">
+                <span>🚀</span>
+                <span>✨</span>
+                <span>🌟</span>
+                <span>💫</span>
+                <span>🏸</span>
+            </div>
+            <h1>이효은의 유니버스 🏸</h1>
+            
+        </header>
+
+        <nav>
+            <h3>📂 바로가기 메뉴</h3>
+            <div class="nav-grid">
+                <a class="nav-card" href="myProfile.html">
+                    <span class="nav-card-kr">소개</span>
+                    <span class="nav-card-en">(Profile)</span>
+                </a>
+                <a class="nav-card" href="myClass.html">
+                    <span class="nav-card-kr">수업 시간표</span>
+                    <span class="nav-card-en">(Class)</span>
+                </a>
+                <a class="nav-card" href="myHoliday.html">
+                    <span class="nav-card-kr">휴일 계획</span>
+                    <span class="nav-card-en">(Holiday)</span>
+                </a>
+                <a class="nav-card" href="myTrip.html">
+                    <span class="nav-card-kr">여행 앨범</span>
+                    <span class="nav-card-en">(Album)</span>
+                </a>
+                <a class="nav-card" href="signUp.html">
+                    <span class="nav-card-kr">회원가입</span>
+                    <span class="nav-card-en">(Sign Up)</span>
+                </a>
+            </div>
+        </nav>
+
+        <hr>
+
+        <div class="content-wrapper">
+            <main>
+                <h2>📌 이달의 주요 소식</h2>
+
+                <section class="reveal">
+                    <h3>최근 공지 및 업데이트</h3>
+                    <article class="news-spotlight">
+                        <span class="news-badge">NEWS 🎉</span>
+                        <h4>수원의 자랑 이효은양의 준우승을 축하합니다! 🏆</h4>
+                        <p>수원시 배드민턴 대회에서 값진 준우승을 차지했습니다!</p>
+                        <p>작성일: <time datetime="2026-07-24">2026년 7월 24일</time></p>
+                        <div class="news-carousel">
+                            <button type="button" class="carousel-arrow carousel-prev" aria-label="이전 사진">‹</button>
+                            <div class="news-carousel-viewport">
+                                <div class="news-carousel-track">
+                                    <img src="media/준우승.jpg" alt="배드민턴 준우승 시상식" class="news-carousel-photo">
+                                    <img src="media/배드민턴.jpg" alt="배드민턴 경기 모습" class="news-carousel-photo">
+                                </div>
+                            </div>
+                            <button type="button" class="carousel-arrow carousel-next" aria-label="다음 사진">›</button>
+                            <div class="news-carousel-dots">
+                                <span class="dot is-active"></span>
+                                <span class="dot"></span>
+                            </div>
+                        </div>
+                    </article>
+                </section>
+
+                <section class="reveal quote-card">
+                    <h3>💬 오늘의 명언</h3>
+                    <div class="quote-carousel">
+                        <button type="button" class="carousel-arrow quote-prev" aria-label="이전 명언">‹</button>
+                        <div class="quote-viewport">
+                            <p class="quote-text" id="quote-text"></p>
+                            <p class="quote-author" id="quote-author"></p>
+                        </div>
+                        <button type="button" class="carousel-arrow quote-next" aria-label="다음 명언">›</button>
+                    </div>
+                </section>
+            </main>
+
+            <aside class="reveal">
+                <section class="fortune-area">
+                    <h3>🔮 오늘의 운세</h3>
+                    <button type="button" class="btn-submit" id="fortune-btn">운세 뽑기 ✨</button>
+                    <div class="fortune-result" id="fortune-result"></div>
+                </section>
+                <hr>
+                <section class="mbti-area">
+                    <h3>🧩 나의 MBTI는?</h3>
+                    <div class="mbti-quiz" id="mbti-quiz">
+                        <p class="mbti-question" id="mbti-question"></p>
+                        <div class="mbti-options" id="mbti-options"></div>
+                    </div>
+                    <div class="mbti-result" id="mbti-result" hidden></div>
+                </section>
+                <hr>
+                <section class="lotto-area">
+                    <h3>🍀 행운의 로또 번호</h3>
+                    <button type="button" class="btn-submit" id="lotto-btn">번호 뽑기 🎱</button>
+                    <div class="lotto-result" id="lotto-result"></div>
+                </section>
+            </aside>
+        </div>
+        <hr>
+
+        <footer>
+            <p>이메일 문의: p990307@naver.com | </p>
+            <p><small>© 2026 효은 포트폴리오. 모든 태그는 웹 표준 시맨틱 태그로 작성되었습니다.</small></p>
+        </footer>
+    </div>
+    <script src="script/dynamic.js"></script>
+    <script src="script/fortune.js"></script>
+    <script src="script/mbti.js"></script>
+    <script src="script/lotto.js"></script>
+    <script src="script/newsCarousel.js"></script>
+    <script src="script/quote.js"></script>
+</body>
+
+</html>

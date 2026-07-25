@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>나의 강의 시간표</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="bg-decor" aria-hidden="true">
+        <span style="left:2%; top:10%;">🐰</span>
+        <span style="right:2%; top:12%;">🌸</span>
+        <span style="left:3%; top:32%;">🍀</span>
+        <span style="right:3%; top:38%;">🦋</span>
+        <span style="left:2%; top:58%;">🎈</span>
+        <span style="right:2%; top:62%;">🧸</span>
+        <span style="left:3%; top:84%;">⭐</span>
+        <span style="right:3%; top:86%;">🍒</span>
+    </div>
+    <div class="container">
+        <div class="page-header">
+            <a href="index.html" class="back-home" aria-label="메인 페이지로 돌아가기">←</a>
+            <h1>📅 나의 강의 시간표</h1>
+        </div>
+
+        <div class="schedule-mobile">
+            <div class="schedule-day">
+                <h3 class="schedule-day-title">월요일</h3>
+                <ul class="schedule-day-list">
+                    <li><span class="schedule-time">09:00 - 12:00</span><span class="schedule-subject">머신러닝 및 딥러닝 이해 🤖</span></li>
+                    <li><span class="schedule-time">13:00 - 18:00</span><span class="schedule-subject">생성형 AI 서비스 개발의 이해/활용 (LangChain) 🦜</span></li>
+                </ul>
+            </div>
+            <div class="schedule-day">
+                <h3 class="schedule-day-title">화요일</h3>
+                <ul class="schedule-day-list">
+                    <li><span class="schedule-time">09:00 - 12:00</span><span class="schedule-subject">쿠버네티스 이해 및 애플리케이션 배포 ☸️</span></li>
+                    <li><span class="schedule-time">13:00 - 15:00</span><span class="schedule-subject">머신러닝 및 딥러닝 이해 🤖</span></li>
+                    <li><span class="schedule-time">15:00 - 18:00</span><span class="schedule-subject">Agile 방법론 및 MSA 개발 🔄</span></li>
+                </ul>
+            </div>
+            <div class="schedule-day">
+                <h3 class="schedule-day-title">수요일</h3>
+                <ul class="schedule-day-list">
+                    <li><span class="schedule-time">09:00 - 12:00</span><span class="schedule-subject">sLLM 구현 및 Fine Tunning 🧠</span></li>
+                    <li><span class="schedule-time">13:00 - 15:00</span><span class="schedule-subject">쿠버네티스 이해 및 애플리케이션 배포 ☸️</span></li>
+                    <li><span class="schedule-time">15:00 - 18:00</span><span class="schedule-subject">머신러닝 및 딥러닝 이해 🤖</span></li>
+                </ul>
+            </div>
+            <div class="schedule-day">
+                <h3 class="schedule-day-title">목요일</h3>
+                <ul class="schedule-day-list">
+                    <li><span class="schedule-time">09:00 - 12:00</span><span class="schedule-subject">Agile 방법론 및 MSA 개발 🔄</span></li>
+                    <li><span class="schedule-time">13:00 - 18:00</span><span class="schedule-subject">sLLM 구현 및 Fine Tunning 🧠</span></li>
+                </ul>
+            </div>
+            <div class="schedule-day">
+                <h3 class="schedule-day-title">금요일</h3>
+                <ul class="schedule-day-list">
+                    <li><span class="schedule-time">09:00 - 12:00</span><span class="schedule-subject">생성형 AI 서비스 개발의 이해/활용 (LangChain) 🦜</span></li>
+                    <li><span class="schedule-time">13:00 - 14:00</span><span class="schedule-subject">Agile 방법론 및 MSA 개발 🔄</span></li>
+                    <li><span class="schedule-time">14:00 - 18:00</span><span class="schedule-subject">쿠버네티스 이해 및 애플리케이션 배포 ☸️</span></li>
+                </ul>
+            </div>
+            <p class="schedule-lunch">🍱 점심시간 12:20 - 13:40 🍱</p>
+        </div>
+
+        <div class="schedule-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>시간</th>
+                        <th>월요일</th>
+                        <th>화요일</th>
+                        <th>수요일</th>
+                        <th>목요일</th>
+                        <th>금요일</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>09:00 - 10:00</td>
+                        <td rowspan="3">머신러닝 및<br>딥러닝 이해 🤖</td>
+                        <td rowspan="3">쿠버네티스 이해 및<br>애플리케이션 배포 ☸️</td>
+                        <td rowspan="3">sLLM 구현 및<br>Fine Tunning 🧠</td>
+                        <td rowspan="3">Agile 방법론 및<br>MSA 개발 🔄</td>
+                        <td rowspan="3">생성형 AI 서비스 개발의<br>이해/활용 (LangChain) 🦜</td>
+                    </tr>
+                    <tr>
+                        <td>10:00 - 11:00</td>
+                    </tr>
+                    <tr>
+                        <td>11:00 - 12:00</td>
+                    </tr>
+
+                    <tr class="lunch-row">
+                        <td>12:20 - 13:40</td>
+                        <td colspan="5">🍱 점 심 시 간 🍱</td>
+                    </tr>
+
+                    <tr>
+                        <td>13:00 - 14:00</td>
+                        <td rowspan="4">생성형 AI 서비스 개발의<br>이해/활용 (LangChain) 🦜</td>
+                        <td rowspan="2">머신러닝 및<br>딥러닝 이해 🤖</td>
+                        <td rowspan="2">쿠버네티스 이해 및<br>애플리케이션 배포 ☸️</td>
+                        <td rowspan="3">sLLM 구현 및<br>Fine Tunning 🧠</td>
+                        <td>Agile 방법론 및<br>MSA 개발 🔄</td>
+                    </tr>
+                    <tr>
+                        <td>14:00 - 15:00</td>
+                        <td rowspan="3">쿠버네티스 이해 및<br>애플리케이션 배포 ☸️</td>
+                    </tr>
+                    <tr>
+                        <td>15:00 - 16:00</td>
+                        <td rowspan="3">Agile 방법론 및<br>MSA 개발 🔄</td>
+                        <td rowspan="3">머신러닝 및<br>딥러닝 이해 🤖</td>
+                    </tr>
+                    <tr>
+                        <td>16:00 - 17:00</td>
+                        <td rowspan="2">sLLM 구현 및<br>Fine Tunning 🧠</td>
+                    </tr>
+                    <tr>
+                        <td>17:00 - 18:00</td>
+                        <td>생성형 AI 서비스 개발의<br>이해/활용 (LangChain) 🦜</td>
+                        <td>쿠버네티스 이해 및<br>애플리케이션 배포 ☸️</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

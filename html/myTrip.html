@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>나의 여행 앨범</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="bg-decor" aria-hidden="true">
+        <span style="left:2%; top:10%;">🐰</span>
+        <span style="right:2%; top:12%;">🌸</span>
+        <span style="left:3%; top:32%;">🍀</span>
+        <span style="right:3%; top:38%;">🦋</span>
+        <span style="left:2%; top:58%;">🎈</span>
+        <span style="right:2%; top:62%;">🧸</span>
+        <span style="left:3%; top:84%;">⭐</span>
+        <span style="right:3%; top:86%;">🍒</span>
+    </div>
+    <div class="container">
+        <div class="page-header">
+            <a href="index.html" class="back-home" aria-label="메인 페이지로 돌아가기">←</a>
+            <h1>🌍 나의 여행 앨범 🎵</h1>
+        </div>
+        <div class="audio-player">
+            <p class="audio-title">🎵 러브홀릭스 - Butterfly</p>
+            <audio controls>
+                <source src="media/이효은노래.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+
+        <hr>
+
+        <section class="reveal">
+            <h2>🌏 나라별 여행 앨범</h2>
+            <p class="album-hint">동그라미를 클릭하면 사진을 크게 볼 수 있어요</p>
+
+            <div class="country-grid">
+                <button type="button" class="country-circle" data-album="jeju">
+                    <img src="media/제주도.jpg" alt="제주도" class="country-thumb">
+                    <span class="country-label">제주도 🍊</span>
+                </button>
+                <button type="button" class="country-circle" data-album="mongolia">
+                    <img src="media/몽골.jpg" alt="몽골" class="country-thumb">
+                    <span class="country-label">몽골 🐎</span>
+                </button>
+                <button type="button" class="country-circle" data-album="europe">
+                    <img src="media/에펠탑.JPG" alt="유럽" class="country-thumb">
+                    <span class="country-label">유럽 🗼</span>
+                </button>
+                <button type="button" class="country-circle" data-album="japan">
+                    <img src="media/후쿠오카.jpg" alt="일본" class="country-thumb">
+                    <span class="country-label">일본 🎎</span>
+                </button>
+            </div>
+        </section>
+
+        <hr>
+
+        <section class="reveal">
+            <h2>🎬 하이라이트 영상!</h2>
+            <div class="video-box">
+                <div class="video-frame">
+                    <video controls disablepictureinpicture disableremoteplayback>
+                        <source src="media/패러글라이딩.MOV" type="video/quicktime">
+                        <source src="media/패러글라이딩.MOV" type="video/mp4">
+                        이 브라우저에서는 영상을 재생할 수 없어요.
+                    </video>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="lightbox" id="lightbox" hidden>
+        <div class="lightbox-backdrop" id="lightbox-backdrop"></div>
+        <button type="button" class="lightbox-close" id="lightbox-close" aria-label="닫기">✕</button>
+        <div class="lightbox-content">
+            <button type="button" class="lightbox-arrow lightbox-prev" id="lightbox-prev" aria-label="이전 사진">‹</button>
+            <div class="lightbox-viewport">
+                <div class="lightbox-track" id="lightbox-track"></div>
+            </div>
+            <button type="button" class="lightbox-arrow lightbox-next" id="lightbox-next" aria-label="다음 사진">›</button>
+        </div>
+        <p class="lightbox-caption" id="lightbox-caption"></p>
+    </div>
+
+    <script src="script/trip.js"></script>
+    <script src="script/dynamic.js"></script>
+</body>
+</html>

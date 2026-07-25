@@ -1,0 +1,1546 @@
+/* ==========================================================================
+   [미션 1] 구글 폰트 불러오기 + 전체 테마
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;700&family=Gowun+Batang&display=swap');
+
+html {
+    zoom: 1.1;
+}
+
+/* 전체 페이지 글꼴 및 배경 기본 설정 */
+body {
+    font-family: 'Noto Serif KR', serif;
+    line-height: 1.9;
+    color: #4a4a45;
+    background-color: #f7f3ec;   /* 따뜻한 크림 배경 */
+    font-size: 25px;
+}
+
+/* 배경 여백을 채우는 귀여운 캐릭터 장식 (넓은 화면에서만 표시) */
+.bg-decor {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.bg-decor span {
+    position: absolute;
+    font-size: 2.4em;
+    opacity: 0.6;
+    animation: bgDecorFloat 6s ease-in-out infinite;
+}
+
+.bg-decor span:nth-child(even) {
+    animation-delay: -3s;
+}
+
+@keyframes bgDecorFloat {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-16px) rotate(6deg); }
+}
+
+@media (min-width: 1600px) {
+    .bg-decor {
+        display: block;
+    }
+}
+
+/* 메인 제목 스타일 (h1) */
+h1 {
+    font-family: 'Gowun Batang', serif;
+    color: #2f2a25;
+    font-size: 46px;
+    font-weight: 400;
+    text-align: center;
+    letter-spacing: 3px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #d8cdb8;
+    margin-bottom: 35px;
+}
+
+/* 부제목 h2 */
+h2 {
+    font-family: 'Gowun Batang', serif;
+    color: #3a3530;
+    font-size: 28px;
+    font-weight: 400;
+    background-color: transparent;
+    padding: 0 0 10px 0;
+    border-left: none;
+    border-bottom: 2px solid #c9a97e;
+    display: inline-block;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+/* 소제목 h3 */
+h3 {
+    color: #a97d50;
+    font-size: 20px;
+    font-weight: 700;
+    padding-bottom: 5px;
+    border-bottom: none;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+}
+
+/* 본문 텍스트 링크 스타일 */
+a {
+    color: #a97d50;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s ease;
+}
+
+a:hover {
+    border-bottom: 1px solid #a97d50;
+}
+
+/* ==========================================================================
+   [미션 2] 박스 모델 - 매거진 레이아웃
+   ========================================================================== */
+* {
+    box-sizing: border-box;
+}
+
+.container {
+    position: relative;
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 60px 40px;
+}
+
+/* 여행 앨범의 개별 카드 스타일링 (.trip-card) */
+.trip-card {
+    background-color: #ffffff;
+    border: none;
+    border-radius: 3px;
+    padding: 0;
+    margin-bottom: 30px;
+    overflow: hidden;
+    text-align: center;
+    font-size: 0.95em;
+    color: #6f665c;
+    box-shadow: 0 6px 20px rgba(60, 50, 30, 0.08);
+}
+
+/* 카드 내부의 이미지 조절 */
+.trip-card img {
+    display: block;
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    margin-bottom: 0;
+    filter: saturate(0.85) contrast(1.02);
+    transition: filter 0.5s ease, transform 0.5s ease;
+}
+
+.trip-card:hover img {
+    filter: saturate(1.05) contrast(1.05);
+    transform: scale(1.03);
+}
+
+.trip-caption {
+    display: block;
+    padding: 16px 12px;
+    font-size: 0.92em;
+    letter-spacing: 1px;
+    color: #8a8072;
+    font-style: italic;
+}
+
+/* 시간표 테이블 정돈 (myClass.html) */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 0.9em;
+}
+
+th, td {
+    border: 1px solid #e5ddd0;
+    padding: 12px;
+    text-align: center;
+}
+
+th {
+    background-color: #efe6d8;
+    color: #4a3f2f;
+    font-weight: 700;
+}
+
+/* 시간표 전용 카드 래퍼: 크림 배경과 확실히 분리되도록 흰 카드 + 진한 테두리 */
+.schedule-wrap {
+    background-color: #fffdfa;
+    border: 1px solid #e5ddd0;
+    border-radius: 14px;
+    padding: 24px;
+    margin-top: 24px;
+    box-shadow: 0 8px 26px rgba(60, 50, 30, 0.1);
+    overflow-x: auto;
+}
+
+.schedule-wrap table {
+    margin-top: 0;
+    min-width: 720px;
+    font-size: 1em;
+}
+
+.schedule-wrap th,
+.schedule-wrap td {
+    border: 1px solid #d8cdb8;
+    padding: 16px 10px;
+    line-height: 1.5;
+    vertical-align: middle;
+}
+
+.schedule-wrap th {
+    background-color: #a97d50;
+    color: #ffffff;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    border-color: #a97d50;
+}
+
+.schedule-wrap td:first-child {
+    background-color: #f3ead9;
+    color: #6f4f2f;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.schedule-wrap .lunch-row td {
+    background-color: #fdeedb;
+    color: #a9752c;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.schedule-wrap th:first-child,
+.schedule-wrap td:first-child {
+    position: sticky;
+    left: 0;
+    z-index: 1;
+}
+
+.schedule-mobile {
+    display: none;
+}
+
+.schedule-day {
+    background-color: #fffdfa;
+    border: 1px solid #e5ddd0;
+    border-radius: 14px;
+    padding: 18px 20px;
+    margin-top: 16px;
+    box-shadow: 0 6px 18px rgba(60, 50, 30, 0.08);
+}
+
+.schedule-day-title {
+    margin: 0 0 8px;
+    padding-bottom: 6px;
+    color: #a97d50;
+    border-bottom: 2px solid #f0e4cf;
+}
+
+.schedule-day-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.schedule-day-list li {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 6px 12px;
+    padding: 10px 0;
+    border-bottom: 1px dashed #e5ddd0;
+}
+
+.schedule-day-list li:last-child {
+    border-bottom: none;
+}
+
+.schedule-time {
+    flex-shrink: 0;
+    color: #6f4f2f;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.schedule-subject {
+    text-align: right;
+}
+
+.schedule-lunch {
+    margin-top: 16px;
+    color: #a9752c;
+    font-weight: 700;
+    text-align: center;
+}
+
+@media (max-width: 786px) {
+    .schedule-wrap {
+        display: none;
+    }
+
+    .schedule-mobile {
+        display: block;
+    }
+}
+
+/* ==========================================================================
+   [미션 3] 가독성 높은 회원가입 폼
+   ========================================================================== */
+fieldset {
+    border: 1px solid #e5ddd0;
+    border-radius: 6px;
+    padding: 25px;
+    margin-bottom: 20px;
+    background-color: #fffdfa;
+}
+
+legend {
+    font-weight: bold;
+    color: #a97d50;
+    padding: 0 12px;
+    font-family: 'Gowun Batang', serif;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="date"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #d8cdb8;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 0.95em;
+    background-color: #fffdfa;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    width: auto;
+    margin-right: 5px;
+    cursor: pointer;
+    accent-color: #a97d50;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* 버튼 공통 스타일링 */
+.btn-submit,
+.btn-reset {
+    padding: 12px 28px;
+    font-size: 0.95em;
+    font-weight: bold;
+    border: none;
+    border-radius: 30px;      /* 알약 모양으로 부드럽게 */
+    cursor: pointer;
+    margin-right: 10px;
+    letter-spacing: 0.5px;
+    transition: all 0.25s ease;
+}
+
+.btn-submit {
+    background-color: #a97d50;
+    color: #ffffff;
+}
+
+.btn-submit:hover {
+    background-color: #8f6640;
+    transform: translateY(-2px);
+}
+
+.btn-reset {
+    background-color: #e5ddd0;
+    color: #6f665c;
+}
+
+.btn-reset:hover {
+    background-color: #d8cdb8;
+    transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   [미션 4] Flex와 Grid로 레이아웃 잡기
+   ========================================================================== */
+.nav-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 16px;
+    border-bottom: 1px solid #e5ddd0;
+    padding-bottom: 24px;
+    margin-bottom: 10px;
+}
+
+.nav-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 22px 12px;
+    background-color: #fffdfa;
+    border: 1px solid #e5ddd0;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 14px rgba(60, 50, 30, 0.06);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.nav-card-kr {
+    font-family: 'Gowun Batang', serif;
+    font-size: 1.05em;
+    color: #3a3530;
+    transition: color 0.25s ease;
+}
+
+.nav-card-en {
+    font-size: 0.8em;
+    color: #a97d50;
+    letter-spacing: 0.5px;
+    transition: color 0.25s ease;
+}
+
+.nav-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 26px rgba(60, 50, 30, 0.15);
+    background-color: #a97d50;
+    border-color: #a97d50;
+}
+
+.nav-card:hover .nav-card-kr,
+.nav-card:hover .nav-card-en {
+    color: #ffffff;
+}
+
+/* Grid 활용: 여행지 앨범 3열 바둑판 배치 */
+.trip-grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.content-wrapper {
+    display: flex;
+    gap: 40px;
+    align-items: stretch;
+}
+
+main {
+    flex: 7;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+main > section {
+    display: flex;
+    flex-direction: column;
+}
+
+aside {
+    flex: 3;
+    background-color: #fffdfa;
+    padding: 20px;
+    border-radius: 6px;
+    border: 1px solid #e5ddd0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+aside hr {
+    width: 100%;
+    border: none;
+    height: 2px;
+    background: linear-gradient(to right, transparent, #c9a97e, transparent);
+}
+
+/* ==========================================================================
+   [미션 5] 반응형 미디어 쿼리
+   ========================================================================== */
+@media (max-width: 786px) {
+
+    .nav-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .content-wrapper {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    main, aside {
+        width: 100%;
+    }
+
+    .trip-grid-container {
+        grid-template-columns: 1fr;
+    }
+
+    h1 {
+        font-size: 32px;
+    }
+}
+
+/* ==========================================================================
+   [미션 6] 부드러운 전환 및 등장 애니메이션
+   ========================================================================== */
+.trip-card {
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.trip-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 30px rgba(60, 50, 30, 0.15);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h1 {
+    animation: fadeInUp 1s ease-out forwards;
+}
+
+/* ==========================================================================
+   [No 미션] 자바스크립트 영역 (사이드바 버튼)
+   ========================================================================== */
+aside section:last-child {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+aside section:last-child button {
+    width: 85%;
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    font-size: 0.9em;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #a97d50;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(60, 50, 30, 0.08);
+    transition: all 0.25s ease;
+}
+
+aside section:last-child button:hover {
+    background-color: #8f6640;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(60, 50, 30, 0.15);
+}
+
+/* ==========================================================================
+   [No 미션] 메인 페이지 다이나믹 인터랙션
+   ========================================================================== */
+
+/* 히어로 헤더: 움직이는 그라디언트 배경 */
+.hero {
+    position: relative;
+    overflow: hidden;
+    padding: 50px 20px 30px;
+    border-radius: 12px;
+    border-bottom: none;
+    margin-bottom: 10px;
+    background: linear-gradient(120deg, #f7e9d0, #f3d6b8, #e8c4a0, #f3d6b8, #f7e9d0);
+    background-size: 300% 300%;
+    animation: heroGradient 12s ease infinite;
+}
+
+.hero h1,
+.hero p {
+    position: relative;
+    z-index: 2;
+}
+
+.hero h1 {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 10px;
+}
+
+@keyframes heroGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* 히어로 떠다니는 장식 이모지 (마우스 패럴랙스로 JS가 transform을 덧붙임) */
+.hero-decor {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.hero-decor span {
+    position: absolute;
+    font-size: 1.8em;
+    opacity: 0.55;
+    transition: transform 0.15s ease-out;
+    animation: floatUpDown 5s ease-in-out infinite;
+}
+
+.hero-decor span:nth-child(1) { top: 15%; left: 8%; animation-delay: 0s; }
+.hero-decor span:nth-child(2) { top: 65%; left: 18%; animation-delay: 1.2s; }
+.hero-decor span:nth-child(3) { top: 25%; right: 10%; animation-delay: 0.6s; }
+.hero-decor span:nth-child(4) { top: 70%; right: 18%; animation-delay: 1.8s; }
+
+@keyframes floatUpDown {
+    0%, 100% { translate: 0 0; }
+    50% { translate: 0 -14px; }
+}
+
+/* 스크롤 리빌 애니메이션 */
+.reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 버튼 그라디언트 + 리플 효과 */
+.btn-submit,
+.btn-reset,
+aside section:last-child button {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-submit {
+    background: linear-gradient(135deg, #c9a97e, #a97d50);
+}
+
+.btn-submit:hover {
+    background: linear-gradient(135deg, #a97d50, #8f6640);
+}
+
+.ripple {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    margin-left: -6px;
+    margin-top: -6px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.6);
+    transform: scale(0);
+    animation: rippleEffect 0.6s ease-out;
+    pointer-events: none;
+}
+
+@keyframes rippleEffect {
+    to {
+        transform: scale(18);
+        opacity: 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero,
+    .hero-decor span,
+    .reveal,
+    .ripple {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* ==========================================================================
+   [No 미션] 프로필 페이지 - 증명사진 & 아코디언 카드
+   ========================================================================== */
+
+.profile-photo-wrap {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.profile-photo {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid #fffdfa;
+    box-shadow: 0 10px 30px rgba(60, 50, 30, 0.18);
+}
+
+.accordion-group {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 30px;
+}
+
+.accordion {
+    background-color: #fffdfa;
+    border: 1px solid #e5ddd0;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 14px rgba(60, 50, 30, 0.06);
+    transition: box-shadow 0.3s ease;
+}
+
+.accordion.is-open {
+    box-shadow: 0 10px 26px rgba(60, 50, 30, 0.12);
+}
+
+.accordion-toggle {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 22px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font: inherit;
+    text-align: left;
+}
+
+.accordion-icon {
+    font-size: 1.4em;
+}
+
+.accordion-title {
+    flex: 1;
+    font-family: 'Gowun Batang', serif;
+    font-size: 1.15em;
+    color: #3a3530;
+}
+
+.accordion-chevron {
+    color: #a97d50;
+    transition: transform 0.3s ease;
+}
+
+.accordion.is-open .accordion-chevron {
+    transform: rotate(180deg);
+}
+
+.accordion-panel {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.4s ease;
+}
+
+.accordion.is-open .accordion-panel {
+    grid-template-rows: 1fr;
+}
+
+.accordion-panel-inner {
+    overflow: hidden;
+    min-height: 0;
+    padding: 0 22px;
+}
+
+.accordion.is-open .accordion-panel-inner {
+    padding: 0 22px 22px;
+}
+
+.accordion-panel-inner ul,
+.accordion-panel-inner ol,
+.accordion-panel-inner dl {
+    margin: 0;
+}
+
+.publication-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    list-style: none;
+    padding: 0;
+}
+
+.pub-badge {
+    display: inline-block;
+    padding: 6px 16px;
+    background: linear-gradient(135deg, #c9a97e, #a97d50);
+    color: #ffffff;
+    border-radius: 20px;
+    font-size: 0.85em;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    border-bottom: none;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.pub-badge:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(60, 50, 30, 0.2);
+    border-bottom: none;
+}
+
+/* ==========================================================================
+   [No 미션] 휴일 일과 - 세로 타임라인
+   ========================================================================== */
+
+mark {
+    background-color: #f3d6b8;
+    color: #4a3f2f;
+    padding: 0 5px;
+    border-radius: 4px;
+}
+
+.holiday-intro {
+    text-align: center;
+    color: #8a8072;
+    font-style: italic;
+    margin-top: -15px;
+    margin-bottom: 10px;
+}
+
+.timeline-block {
+    margin-bottom: 20px;
+}
+
+.timeline-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: relative;
+}
+
+.timeline-list::before {
+    content: '';
+    position: absolute;
+    left: 103px;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: linear-gradient(#e5ddd0, #c9a97e, #e5ddd0);
+}
+
+.timeline-item {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 10px 0;
+}
+
+.timeline-item:hover {
+    z-index: 30;
+}
+
+.timeline-time {
+    width: 76px;
+    flex-shrink: 0;
+    text-align: right;
+    font-weight: bold;
+    color: #a97d50;
+    font-family: 'Gowun Batang', serif;
+}
+
+.timeline-dot {
+    position: relative;
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background-color: #fffdfa;
+    border: 3px solid #a97d50;
+    z-index: 1;
+    transition: transform 0.25s ease, background-color 0.25s ease;
+}
+
+.timeline-item:hover .timeline-dot {
+    transform: scale(1.3);
+    background-color: #a97d50;
+}
+
+.timeline-desc {
+    flex: 1;
+    padding: 12px 18px;
+    background-color: #fffdfa;
+    border: 1px solid #e5ddd0;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(60, 50, 30, 0.05);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.timeline-item:hover .timeline-desc {
+    transform: translateX(8px);
+    box-shadow: 0 6px 16px rgba(60, 50, 30, 0.1);
+}
+
+.holiday-footer {
+    text-align: center;
+    color: #8a8072;
+    font-style: italic;
+    margin-top: 30px;
+}
+
+.timeline-desc.has-photo {
+    position: relative;
+    cursor: pointer;
+}
+
+.hover-photos {
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    padding-top: 14px;
+    transform: translateX(-50%) translateY(-8px);
+    display: flex;
+    gap: 12px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 20;
+}
+
+.timeline-desc.has-photo:hover .hover-photos {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+    pointer-events: auto;
+}
+
+.hover-photos img {
+    width: 240px;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 14px;
+    border: 4px solid #fffdfa;
+    box-shadow: 0 16px 36px rgba(60, 50, 30, 0.3);
+}
+
+@media (max-width: 786px) {
+    .hover-photos img {
+        width: 150px;
+        height: 150px;
+    }
+}
+
+@media (max-width: 600px) {
+    .timeline-list::before {
+        left: 60px;
+    }
+
+    .timeline-time {
+        width: 40px;
+        font-size: 0.8em;
+    }
+
+    .timeline-item {
+        gap: 12px;
+    }
+}
+
+/* ==========================================================================
+   [No 미션] 메인 페이지 - 뉴스 스포트라이트 & 오늘의 운세
+   ========================================================================== */
+
+.news-spotlight {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(160deg, #fffdfa, #fbf2e2);
+    border: 1px solid #e8d2ab;
+    border-radius: 14px;
+    padding: 26px 24px 24px;
+    box-shadow: 0 10px 26px rgba(169, 125, 80, 0.12);
+    overflow: hidden;
+}
+
+.news-spotlight h4 {
+    margin-top: 0;
+}
+
+.news-badge {
+    display: inline-block;
+    padding: 5px 14px;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, #e0913f, #c9752c);
+    color: #ffffff;
+    font-size: 0.75em;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border-radius: 20px;
+    animation: newsPulse 2s ease-in-out infinite;
+}
+
+@keyframes newsPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.06); }
+}
+
+.news-carousel {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 18px;
+}
+
+.news-carousel-viewport {
+    flex: 1;
+    height: 320px;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 10px 26px rgba(60, 50, 30, 0.18);
+}
+
+.news-carousel-track {
+    display: flex;
+    height: 100%;
+    transition: transform 0.5s ease;
+}
+
+.news-carousel-photo {
+    width: 100%;
+    height: 100%;
+    flex-shrink: 0;
+    display: block;
+    object-fit: contain;
+}
+
+.carousel-arrow {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid #e5ddd0;
+    background-color: #fffdfa;
+    color: #a97d50;
+    font-size: 1.5em;
+    line-height: 1;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.carousel-arrow:hover {
+    background-color: #a97d50;
+    color: #ffffff;
+    transform: scale(1.08);
+}
+
+.news-carousel-dots {
+    position: absolute;
+    left: 50%;
+    bottom: 10px;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 6px;
+}
+
+.news-carousel-dots .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(169, 125, 80, 0.4);
+    transition: background-color 0.2s ease;
+}
+
+.news-carousel-dots .dot.is-active {
+    background-color: #a97d50;
+}
+
+.quote-card {
+    margin-top: 20px;
+    background-color: #fffdfa;
+    border: 1px solid #e5ddd0;
+    border-radius: 14px;
+    padding: 26px 24px;
+    box-shadow: 0 8px 24px rgba(60, 50, 30, 0.08);
+}
+
+.quote-card h3 {
+    margin-top: 0;
+}
+
+.quote-carousel {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 8px;
+}
+
+.quote-viewport {
+    flex: 1;
+    text-align: center;
+}
+
+.quote-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 3.6em;
+    font-family: 'Gowun Batang', serif;
+    font-size: 1.2em;
+    line-height: 1.5;
+    color: #3a3530;
+    transition: opacity 0.2s ease;
+    margin-bottom: 8px;
+}
+
+.quote-author {
+    display: block;
+    height: 1.6em;
+    line-height: 1.6em;
+    overflow: visible;
+    font-size: 0.85em;
+    color: #a97d50;
+    transition: opacity 0.2s ease;
+}
+
+@media (max-width: 600px) {
+    .news-carousel-viewport {
+        height: 220px;
+    }
+
+    .carousel-arrow {
+        width: 32px;
+        height: 32px;
+        font-size: 1.2em;
+    }
+}
+
+
+
+.fortune-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.fortune-result {
+    width: 100%;
+    text-align: center;
+    min-height: 220px;
+    opacity: 0;
+}
+
+.fortune-result.is-visible {
+    animation: fortunePop 0.5s ease forwards;
+}
+
+@keyframes fortunePop {
+    from { opacity: 0; transform: scale(0.85) translateY(6px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.fortune-score {
+    font-family: 'Gowun Batang', serif;
+    font-size: 1.8em;
+    color: #a97d50;
+    margin: 4px 0 2px;
+}
+
+.fortune-message {
+    font-size: 0.9em;
+    color: #6f665c;
+}
+
+.mbti-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.mbti-quiz,
+.mbti-result {
+    width: 100%;
+    height: 280px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.mbti-quiz[hidden],
+.mbti-result[hidden] {
+    display: none;
+}
+
+.mbti-quiz {
+    text-align: center;
+}
+
+.mbti-question {
+    font-family: 'Gowun Batang', serif;
+    color: #3a3530;
+    margin-bottom: 12px;
+}
+
+.mbti-options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.mbti-option {
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid #d8cdb8;
+    background-color: #fffdfa;
+    color: #6f4f2f;
+    cursor: pointer;
+    font: inherit;
+    font-size: 0.9em;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.mbti-option:hover {
+    background-color: #a97d50;
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+.mbti-result {
+    text-align: center;
+}
+
+.mbti-type {
+    font-family: 'Gowun Batang', serif;
+    font-size: 2em;
+    color: #a97d50;
+    margin: 6px 0 4px;
+    letter-spacing: 2px;
+}
+
+.mbti-desc {
+    font-size: 0.9em;
+    color: #6f665c;
+    margin-bottom: 12px;
+}
+
+.lotto-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.lotto-result {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 100px;
+    opacity: 0;
+}
+
+.lotto-result.is-visible {
+    animation: fortunePop 0.5s ease forwards;
+}
+
+.lotto-ball {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: #ffffff;
+    font-weight: bold;
+    font-family: 'Gowun Batang', serif;
+    box-shadow: 0 4px 10px rgba(60, 50, 30, 0.2);
+}
+
+.lotto-ball.c1 { background: linear-gradient(135deg, #e0913f, #c9752c); }
+.lotto-ball.c2 { background: linear-gradient(135deg, #7fa8c9, #4f7fa3); }
+.lotto-ball.c3 { background: linear-gradient(135deg, #d97a7a, #b74f4f); }
+.lotto-ball.c4 { background: linear-gradient(135deg, #a3a3a3, #777777); }
+.lotto-ball.c5 { background: linear-gradient(135deg, #8fbf7a, #5f9a4a); }
+
+/* ==========================================================================
+   [No 미션] 여행 앨범 - 나라별 동그라미 & 라이트박스
+   ========================================================================== */
+
+.album-hint {
+    color: #8a8072;
+    font-style: italic;
+    margin-top: -12px;
+}
+
+.country-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 48px;
+    margin-top: 24px;
+}
+
+.country-circle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font: inherit;
+    padding: 0;
+}
+
+.country-thumb {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #fffdfa;
+    box-shadow: 0 8px 20px rgba(60, 50, 30, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.country-circle:hover .country-thumb {
+    transform: scale(1.08);
+    box-shadow: 0 12px 26px rgba(60, 50, 30, 0.22);
+    border-color: #c9a97e;
+}
+
+.country-label {
+    font-family: 'Gowun Batang', serif;
+    color: #3a3530;
+    font-size: 1.2em;
+}
+
+.lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.lightbox[hidden] {
+    display: none;
+}
+
+.lightbox-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(30, 24, 18, 0.82);
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 24px;
+    right: 28px;
+    z-index: 3;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.lightbox-close:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.lightbox-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    width: min(90vw, 720px);
+}
+
+.lightbox-arrow {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    font-size: 1.6em;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.lightbox-arrow:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.08);
+}
+
+.lightbox-viewport {
+    flex: 1;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+}
+
+.lightbox-track {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.lightbox-track img {
+    width: 100%;
+    flex-shrink: 0;
+    max-height: 78vh;
+    object-fit: contain;
+    background-color: #17130f;
+}
+
+.lightbox-caption {
+    position: relative;
+    z-index: 1;
+    margin-top: 16px;
+    color: #f3e9d8;
+    font-family: 'Gowun Batang', serif;
+    letter-spacing: 0.5px;
+}
+
+@media (max-width: 600px) {
+    .lightbox-content {
+        width: 92vw;
+        gap: 6px;
+    }
+
+    .lightbox-arrow {
+        width: 36px;
+        height: 36px;
+        font-size: 1.3em;
+    }
+
+    .country-thumb {
+        width: 130px;
+        height: 130px;
+    }
+}
+
+.video-box {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.video-frame {
+    width: 100%;
+    max-width: 860px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 26px rgba(60, 50, 30, 0.15);
+    background-color: #17130f;
+}
+
+.video-frame video {
+    display: block;
+    width: 100%;
+}
+
+.audio-player {
+    max-width: 640px;
+    margin: 10px 0 4px;
+    padding: 16px 20px;
+    background: linear-gradient(160deg, #fffdfa, #fbf2e2);
+    border: 1px solid #e8d2ab;
+    border-radius: 14px;
+    box-shadow: 0 8px 20px rgba(169, 125, 80, 0.12);
+}
+
+.audio-title {
+    margin: 0 0 10px;
+    font-family: 'Gowun Batang', serif;
+    color: #6f4f2f;
+    font-weight: bold;
+}
+
+audio {
+    display: block;
+    width: 100%;
+    height: 40px;
+}
+
+/* ==========================================================================
+   [No 미션] 서브 페이지 - 메인으로 돌아가기 버튼
+   ========================================================================== */
+
+.page-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 45px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #d8cdb8;
+    margin-bottom: 35px;
+}
+
+.page-header h1,
+.page-header h2 {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.back-home {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: #fffdfa;
+    color: #a97d50;
+    font-size: 1.3em;
+    border: 1px solid #e5ddd0;
+    box-shadow: 0 4px 12px rgba(60, 50, 30, 0.12);
+    text-decoration: none;
+    transition: transform 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.back-home:hover {
+    transform: translateX(-3px);
+    background-color: #a97d50;
+    color: #ffffff;
+    border-color: #a97d50;
+    box-shadow: 0 6px 16px rgba(60, 50, 30, 0.2);
+}
+
+@media (max-width: 600px) {
+    .page-header {
+        gap: 10px;
+    }
+
+    .back-home {
+        width: 36px;
+        height: 36px;
+        font-size: 1.1em;
+    }
+}
